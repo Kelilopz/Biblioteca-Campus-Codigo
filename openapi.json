@@ -1,0 +1,608 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Biblioteca Campus",
+    "version": "1.0.0",
+    "description": "Aplicación académica local con perfiles ficticios. No es un sistema de autenticación institucional."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3000"
+    }
+  ],
+  "paths": {
+    "/api/state": {
+      "get": {
+        "summary": "Consultar estado visible",
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Seleccionar un perfil ficticio (cookie campus)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "userId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/logout": {
+      "post": {
+        "summary": "Cerrar la sesión local",
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/loans": {
+      "post": {
+        "summary": "Registrar préstamo (bibliotecario)",
+        "security": [
+          {
+            "sesionDemo": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "copyId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "userId",
+                  "copyId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/loans/{id}/return": {
+      "post": {
+        "summary": "Registrar devolución (bibliotecario)",
+        "security": [
+          {
+            "sesionDemo": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reservations": {
+      "post": {
+        "summary": "Reservar o entrar a la cola (lector)",
+        "security": [
+          {
+            "sesionDemo": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bookId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "bookId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reservations/{id}/cancel": {
+      "post": {
+        "summary": "Cancelar una reserva propia o gestionarla como bibliotecario",
+        "security": [
+          {
+            "sesionDemo": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/demo/advance": {
+      "post": {
+        "summary": "Adelantar el reloj simulado (bibliotecario)",
+        "security": [
+          {
+            "sesionDemo": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "days": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 365
+                  }
+                },
+                "required": [
+                  "days"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado de la aplicación visible para el perfil actual.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error de validación, acceso, conflicto o servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sesionDemo": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "campus"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Estado": {
+        "type": "object",
+        "properties": {
+          "today": {
+            "type": "string",
+            "format": "date"
+          },
+          "actor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            ],
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Usuario"
+            }
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "title": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "author",
+                "category",
+                "description",
+                "color"
+              ]
+            }
+          },
+          "copies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "bookId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "available",
+                    "held",
+                    "loaned"
+                  ]
+                },
+                "heldFor": {
+                  "type": "string",
+                  "minLength": 1,
+                  "nullable": true
+                }
+              },
+              "required": [
+                "id",
+                "bookId",
+                "status",
+                "heldFor"
+              ]
+            }
+          },
+          "loans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "userId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "copyId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "startedAt": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "dueAt": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "returnedAt": {
+                  "type": "string",
+                  "format": "date",
+                  "nullable": true
+                }
+              },
+              "required": [
+                "id",
+                "userId",
+                "copyId",
+                "startedAt",
+                "dueAt",
+                "returnedAt"
+              ]
+            }
+          },
+          "reservations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "userId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "bookId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "copyId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "nullable": true
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "waiting",
+                    "held",
+                    "cancelled",
+                    "expired",
+                    "fulfilled"
+                  ]
+                },
+                "expiresAt": {
+                  "type": "string",
+                  "format": "date",
+                  "nullable": true
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "position": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "nullable": true
+                }
+              },
+              "required": [
+                "id",
+                "userId",
+                "bookId",
+                "copyId",
+                "status",
+                "expiresAt",
+                "createdAt",
+                "position"
+              ]
+            }
+          }
+        },
+        "required": [
+          "today",
+          "actor",
+          "users",
+          "books",
+          "copies",
+          "loans",
+          "reservations"
+        ]
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "lector",
+              "bibliotecario"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "role"
+        ]
+      }
+    }
+  }
+}

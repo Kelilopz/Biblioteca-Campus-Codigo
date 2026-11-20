@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "today": "2026-11-20",
+  "users": [
+    {
+      "id": "lucia",
+      "name": "Lucía Navarro",
+      "role": "lector"
+    },
+    {
+      "id": "ana",
+      "name": "Ana Beltrán",
+      "role": "lector"
+    },
+    {
+      "id": "mateo",
+      "name": "Mateo Salazar",
+      "role": "lector"
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo Vera",
+      "role": "lector"
+    },
+    {
+      "id": "bibliotecario",
+      "name": "Valeria Ortiz",
+      "role": "bibliotecario"
+    }
+  ],
+  "books": [
+    {
+      "id": "diseno",
+      "title": "Diseñar para las personas",
+      "author": "Elena Martín",
+      "category": "Diseño",
+      "color": "#eed654",
+      "description": "Convierte las necesidades de las personas en decisiones de diseño.",
+      "year": 2024,
+      "isbn": "978-84-000-1024-3"
+    },
+    {
+      "id": "ciudad",
+      "title": "La ciudad que habitamos",
+      "author": "Mateo Ríos",
+      "category": "Arquitectura",
+      "color": "#dd5844",
+      "description": "Una mirada a los espacios urbanos que construimos y compartimos.",
+      "year": 2023,
+      "isbn": "978-84-000-2042-6"
+    },
+    {
+      "id": "datos",
+      "title": "Introducción a los datos",
+      "author": "Sara Vidal",
+      "category": "Tecnología",
+      "color": "#4c8c7c",
+      "description": "Fundamentos para organizar, analizar y comunicar datos.",
+      "year": 2025,
+      "isbn": null
+    },
+    {
+      "id": "sociedad",
+      "title": "Pensamiento y sociedad",
+      "author": "Alba Torres",
+      "category": "Humanidades",
+      "color": "#9b8eca",
+      "description": "Ideas para entender comunidades e instituciones.",
+      "year": 2022,
+      "isbn": null
+    },
+    {
+      "id": "ecologias",
+      "title": "Ecologías del futuro",
+      "author": "Daniel Reyes",
+      "category": "Medio ambiente",
+      "color": "#47a06b",
+      "description": "Escenarios para pensar la sostenibilidad.",
+      "year": 2024,
+      "isbn": null
+    },
+    {
+      "id": "territorio",
+      "title": "Lecturas del territorio",
+      "author": "Isabel Ramos",
+      "category": "Ciencias sociales",
+      "color": "#997452",
+      "description": "Historias, paisajes y comunidades.",
+      "year": 2022,
+      "isbn": null
+    },
+    {
+      "id": "ciencia",
+      "title": "Ciencia abierta",
+      "author": "Gabriel Luna",
+      "category": "Tecnología",
+      "color": "#597fb3",
+      "description": "Principios para compartir el conocimiento científico.",
+      "year": 2025,
+      "isbn": null
+    },
+    {
+      "id": "colecciones",
+      "title": "Colecciones vivas",
+      "author": "Sofía Díaz",
+      "category": "Diseño",
+      "color": "#bf6f8d",
+      "description": "Conservar colecciones accesibles a una comunidad.",
+      "year": 2023,
+      "isbn": null
+    }
+  ],
+  "copies": [
+    {
+      "id": "EJ-001",
+      "bookId": "diseno"
+    },
+    {
+      "id": "EJ-002",
+      "bookId": "diseno"
+    },
+    {
+      "id": "EJ-003",
+      "bookId": "ciudad"
+    },
+    {
+      "id": "EJ-004",
+      "bookId": "datos"
+    },
+    {
+      "id": "EJ-005",
+      "bookId": "datos"
+    },
+    {
+      "id": "EJ-006",
+      "bookId": "sociedad"
+    },
+    {
+      "id": "EJ-007",
+      "bookId": "sociedad"
+    },
+    {
+      "id": "EJ-008",
+      "bookId": "ecologias"
+    },
+    {
+      "id": "EJ-009",
+      "bookId": "territorio"
+    },
+    {
+      "id": "EJ-010",
+      "bookId": "ciencia"
+    },
+    {
+      "id": "EJ-011",
+      "bookId": "colecciones"
+    }
+  ],
+  "loans": [
+    {
+      "id": "l-cola",
+      "userId": "mateo",
+      "copyId": "EJ-003",
+      "startedAt": "2026-11-19",
+      "dueAt": "2026-11-27",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-1",
+      "userId": "hugo",
+      "copyId": "EJ-004",
+      "startedAt": "2026-11-11",
+      "dueAt": "2026-11-19",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-2",
+      "userId": "hugo",
+      "copyId": "EJ-006",
+      "startedAt": "2026-11-18",
+      "dueAt": "2026-11-26",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-3",
+      "userId": "hugo",
+      "copyId": "EJ-008",
+      "startedAt": "2026-11-18",
+      "dueAt": "2026-11-26",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-4",
+      "userId": "hugo",
+      "copyId": "EJ-009",
+      "startedAt": "2026-11-18",
+      "dueAt": "2026-11-26",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-5",
+      "userId": "hugo",
+      "copyId": "EJ-010",
+      "startedAt": "2026-11-18",
+      "dueAt": "2026-11-26",
+      "returnedAt": null
+    },
+    {
+      "id": "l-hugo-6",
+      "userId": "hugo",
+      "copyId": "EJ-011",
+      "startedAt": "2026-11-18",
+      "dueAt": "2026-11-26",
+      "returnedAt": null
+    }
+  ],
+  "reservations": [
+    {
+      "id": "r-ana",
+      "userId": "ana",
+      "bookId": "ciudad",
+      "copyId": null,
+      "status": "waiting",
+      "expiresAt": null,
+      "createdAt": "2026-11-18"
+    },
+    {
+      "id": "r-hugo",
+      "userId": "hugo",
+      "bookId": "ciudad",
+      "copyId": null,
+      "status": "waiting",
+      "expiresAt": null,
+      "createdAt": "2026-11-19"
+    }
+  ],
+  "lastRealDay": "2026-11-20"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "biblioteca-campus",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Proyecto académico de biblioteca universitaria",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/backend.test.mjs",
+    "test:express": "node --test tests/express.test.mjs"
+  },
+  "optionalDependencies": {
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  }
+}
